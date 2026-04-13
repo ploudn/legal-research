@@ -25,7 +25,7 @@ Documents/
     ...
 ```
 
-`legal_research/` is the parent: all my paper folders sit inside it.
+`legal_research/` sits **alongside** the paper folders — they are all siblings inside `workspace/`. `legal_research/` does not contain the paper folders; it is simply a dedicated place for shared tools that any paper project can use.
 
 ---
 

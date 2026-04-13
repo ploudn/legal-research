@@ -7,20 +7,21 @@ Shared tools and conventions for all research projects in this workspace. Each p
 ## Workspace layout
 
 ```
-legal_research/
-  CLAUDE.md               ← this file
-  tools/
-    convert.py            ← PDF/EPUB → txt converter (shared across all projects)
-  agents/
-    README.md
-    paper_intake_template.md
-    agent1_doctrinal.md
-    agent2_methods.md
-    agent3_generalist.md
-    editor_synthesis.md
-    runner.py
-  puiut/                  ← AI governance paper
-  French_corp_gov/        ← French corporate governance empirical paper
+workspace/
+  legal_research/         ← this folder (shared tools only)
+    CLAUDE.md
+    tools/
+      convert.py          ← PDF/EPUB → txt converter
+    agents/
+      README.md
+      paper_intake_template.md
+      agent1_doctrinal.md
+      agent2_methods.md
+      agent3_generalist.md
+      editor_synthesis.md
+      runner.py
+  puiut/                  ← AI governance paper (sibling, not subfolder)
+  French_corp_gov/        ← French corporate governance paper
   [other projects]/
 ```
 

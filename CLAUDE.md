@@ -83,7 +83,14 @@ Each section is a `.md` file:
 
 ## Literature reviews
 
-Format: per paper — summary (3–6 sentences), key quotes with printed page numbers, relevance rating. Papers ordered by decreasing relevance to the specific argument. Bibliographies and literature reviews are per paper, not shared across projects.
+Format: per paper, ordered by decreasing relevance to the specific argument:
+
+- **Summary**: 8–12 sentences covering the paper's argument, method, key findings, and limitations
+- **Quotes**: 4–6 per paper, with printed page numbers; select for quotability (passages that could go directly into a footnote or be paraphrased in the text)
+- **Relevance analysis**: 2–4 sentences explaining exactly how this paper bears on the specific argument being developed — not just "this is relevant to X" but "this paper supports/complicates/undermines the claim that Y because Z"
+- **Relevance rating**: High / Medium–High / Medium / Low
+
+Bibliographies and literature reviews are per paper, not shared across projects.
 
 At the end of every literature review, append a section **"Papers worth downloading"** listing works not in the folder that are likely worth reading, based on: frequency of citation across the papers already read, reputation of the journal or publisher, and relevance to the specific argument being developed. For each entry give: full citation, reason for recommending it, and which papers in the folder cite it.
 

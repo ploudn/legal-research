@@ -115,7 +115,7 @@ The agent personas are calibrated for legal and law-adjacent scholarship. For pa
 
 These are tensions in the current approach worth discussing:
 
-**1. Notes in Word (.docx) are opaque to me.** I cannot read `.docx` files natively and rely on you summarising them or converting them first. Consider keeping working notes in `.md` or `.txt` — I can read these directly, which cuts out a translation step.
+**1. Notes in Word (.docx) are fine.** When you provide a `.docx` notes or rider file, I will convert it to txt automatically before reading. No action needed on your end.
 
 **2. The peer-review agents are calibrated for corporate law / governance.** For papers in administrative law, AI regulation, or other fields, Agent 1's expertise list and Agent 3's lenses need field-specific tweaks. I will propose these each time before running.
 

@@ -82,12 +82,13 @@ Each section is a `.md` file:
 - Citation style: Oxford OSCOLA-adjacent (Author, 'Title' (Year) Volume Journal Page, pinpoint)
 - Formatting reference lives in each project folder (usually a `.docx` reference chapter)
 
-Before writing any section, I need from you:
-1. Where it sits in the overall paper (which I get from the outline file)
-2. The section's intended conclusion — what should the reader believe after reading it
-3. Any rider/notes file you've prepared
+Before writing any section, literature review, or summary, I will:
+1. Read the outline and any rider/notes file
+2. Propose a short plan: scope, structure, key sources, intended conclusion
+3. Ask explicitly for the intended conclusion if it is not clear from the outline or notes
+4. Wait for approval before writing
 
-**I will ask for (2) explicitly if you haven't provided it.** Writing without knowing the intended conclusion is the single biggest source of wasted iterations.
+This applies to every piece of writing, not just full sections. The intended conclusion — what the reader should believe after reading — is the single field most likely to cause wasted iterations if missing.
 
 ---
 

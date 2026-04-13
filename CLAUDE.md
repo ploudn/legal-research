@@ -1,6 +1,6 @@
 # legal_research — Shared Instructions
 
-Instructions for all research projects in this workspace. Each project subfolder has its own `CLAUDE.md` for project-specific details; this file governs shared tools, workflow, and standards that apply everywhere.
+Shared tools and conventions for all research projects in this workspace. Each project has its own `CLAUDE.md` for project-specific details.
 
 ---
 
@@ -8,17 +8,17 @@ Instructions for all research projects in this workspace. Each project subfolder
 
 ```
 legal_research/
-  CLAUDE.md               ← this file (shared instructions)
+  CLAUDE.md               ← this file
   tools/
-    convert.py            ← PDF/EPUB → txt converter (use for every project)
+    convert.py            ← PDF/EPUB → txt converter (shared across all projects)
   agents/
-    README.md             ← how to use the peer-review framework
+    README.md
     paper_intake_template.md
     agent1_doctrinal.md
     agent2_methods.md
     agent3_generalist.md
     editor_synthesis.md
-    runner.py             ← API-based automation
+    runner.py
   puiut/                  ← AI governance paper
   French_corp_gov/        ← French corporate governance empirical paper
   [other projects]/
@@ -26,23 +26,15 @@ legal_research/
 
 ---
 
-## Standard research workflow
+## Typical workflow
 
-Every paper follows the same sequence. Steps 1–3 happen before I am involved; the rest is collaborative.
+Papers usually proceed in this order, though not always linearly:
 
-**1. You gather sources.** Download papers (PDF, EPUB), take notes in Word or markdown, draft an outline.
-
-**2. You hand me the sources.** Drop PDFs/EPUBs into the project's `Papers/` folder (or equivalent). Tell me new files have been added.
-
-**3. I convert sources to txt.** I run `tools/convert.py` to produce txt versions with printed page numbers embedded as `=== [Page X] ===` markers. These are what I read — never the raw PDFs. OCR is applied automatically when text extraction fails (image-only scans, DRM-watermarked files).
-
-**4. I do a literature review.** I read the relevant txt files and produce a structured review ordered by relevance to the specific argument being developed. Each entry has: summary, key quotes with page numbers, relevance rating.
-
-**5. I write a section.** Before writing, I read: (a) the overall paper outline, (b) any rider/notes file you've provided, (c) the relevant txt papers. I propose a plan before writing. Output is always `.md` + `.docx`.
-
-**6. You revise and return the draft.** You give me the revised text (or specific passages). I integrate your changes.
-
-**7. I run the peer-review framework.** When a section or the full paper is ready for challenge, I run the three-agent review system (see `agents/README.md`). We agree on the intake template settings before I run it.
+- Sources gathered and dropped into the project's `Papers/` folder
+- Sources converted to txt (see below)
+- Literature review produced for the relevant argument
+- Sections drafted and revised iteratively
+- Peer-review framework run when a draft is ready for challenge
 
 ---
 
@@ -50,26 +42,31 @@ Every paper follows the same sequence. Steps 1–3 happen before I am involved; 
 
 **Always read from txt, never from PDFs directly.** Cite the printed page number shown in `=== [Page X] ===` markers (`~X` means approximate).
 
-To convert all new PDFs/EPUBs in a project:
+When told new files have been added, run:
 ```bash
 python3 /Users/main/Documents/workspace/legal_research/tools/convert.py --root Papers/
 ```
 
-To check for missing conversions only (no conversion):
+Other options:
 ```bash
-python3 /Users/main/Documents/workspace/legal_research/tools/convert.py --root Papers/ --check
+--check          # list missing conversions only, no conversion
+--force FILE     # re-convert a specific file
+--file RELPATH   # convert a single file
 ```
 
-To force re-conversion of a specific file (e.g. after replacing a bad scan):
-```bash
-python3 /Users/main/Documents/workspace/legal_research/tools/convert.py --root Papers/ --force filename.pdf
-```
+The converter handles PDF (text extraction + automatic OCR fallback for image-only pages) and EPUB (chapter markers). Output mirrors the source structure under `Papers/txt/`.
 
-The converter handles:
-- **PDF** — text extraction via PyMuPDF; automatic OCR fallback (Tesseract) for image-only pages
-- **EPUB** — text extraction with chapter markers
+---
 
-Output mirrors the source directory structure under `Papers/txt/`.
+## Before writing anything
+
+Before writing any section, literature review, or summary:
+1. Read the outline and any rider/notes file (convert `.docx` files to txt first if needed)
+2. Propose a plan: scope, structure, key sources, intended conclusion
+3. If the intended conclusion is not explicit, ask for it before proceeding
+4. Wait for approval
+
+The intended conclusion — what the reader should believe after reading — is the most important input. The same sources can support different arguments depending on framing; writing without it causes wasted iterations.
 
 ---
 
@@ -77,64 +74,32 @@ Output mirrors the source directory structure under `Papers/txt/`.
 
 Each section is a `.md` file:
 - ~2000 words of body text (footnotes excluded)
-- `**bold**`, `*italic*`, `[^n]` for footnote refs
-- Footnote definitions at bottom: `[^n]: full citation text`
-- Citation style: Oxford OSCOLA-adjacent (Author, 'Title' (Year) Volume Journal Page, pinpoint)
-- Formatting reference lives in each project folder (usually a `.docx` reference chapter)
-
-Before writing any section, literature review, or summary, I will:
-1. Read the outline and any rider/notes file
-2. Propose a short plan: scope, structure, key sources, intended conclusion
-3. Ask explicitly for the intended conclusion if it is not clear from the outline or notes
-4. Wait for approval before writing
-
-This applies to every piece of writing, not just full sections. The intended conclusion — what the reader should believe after reading — is the single field most likely to cause wasted iterations if missing.
+- `**bold**`, `*italic*`, `[^n]` for footnote refs; footnote definitions at bottom
+- Citation style: Oxford OSCOLA-adjacent — Author, 'Title' (Year) Volume Journal Page, pinpoint
+- Formatting reference and docx conversion script live in each project folder
 
 ---
 
-## Docx conversion
+## Literature reviews
 
-Each project has a `make_[section]_docx.py` conversion script. When writing a new section for a project that doesn't yet have one, I will create it based on the project's formatting reference. Formatting parameters are stored in each project's CLAUDE.md.
+Format: per paper — summary (3–6 sentences), key quotes with printed page numbers, relevance rating. Papers ordered by decreasing relevance to the specific argument. Bibliographies and literature reviews are per paper, not shared across projects.
 
 ---
 
 ## Peer-review framework
 
-Three specialised agents + an editorial synthesis. See `agents/README.md` for full instructions.
+Three agents + editorial synthesis. See `agents/README.md` for full instructions.
 
-**Before running:** fill in `agents/paper_intake_template.md` and show it to me. I will suggest any tweaks needed for the specific paper (field, methodology type, target journal) and wait for your approval before running.
-
-**Modes:**
-- **Review** — challenge an existing draft; produces a prioritised action list
-- **Create** — draft from notes; agents run sequentially, each building on the previous
-
-The agent personas are calibrated for legal and law-adjacent scholarship. For papers with a strong empirical component, Agent 2 (methods) and the intake template may need adjustment — I will flag this.
-
----
-
-## Challenges to this workflow — and proposed improvements
-
-These are tensions in the current approach worth discussing:
-
-**1. Notes in Word (.docx) are fine.** When you provide a `.docx` notes or rider file, I will convert it to txt automatically before reading. No action needed on your end.
-
-**2. The peer-review agents are calibrated for corporate law / governance.** For papers in administrative law, AI regulation, or other fields, Agent 1's expertise list and Agent 3's lenses need field-specific tweaks. I will propose these each time before running.
-
-**3. Literature reviews have no standard template.** Currently they are ad hoc. A consistent format (summary / key quotes / relevance / fit-with-argument) makes them easier to convert into footnotes later. The reviews produced so far follow this format; I will keep it.
-
-**4. No cross-project paper tracking.** A paper downloaded for one project might be relevant to another. There is currently no way to know this. If this becomes a problem, I can maintain a `legal_research/master_bibliography.md` listing all papers across projects.
-
-**5. Section drafts have no version history beyond git.** If you revise a section heavily and then want to go back, git is the only record. Consider committing before sending me a revised draft to review.
+Before running: show me the filled-in `agents/paper_intake_template.md`. I will propose any field-specific tweaks and wait for approval before running.
 
 ---
 
 ## Git and GitHub
 
-Each project has its own GitHub repo (e.g. `ploudn/puiut`, `ploudn/French_corp_gov`). The `legal_research` folder itself has its own repo (`ploudn/legal-research`) for shared tools and instructions only — project subfolders are not part of it (they are separate repos, not submodules).
+Each project has its own repo (`ploudn/puiut`, `ploudn/French_corp_gov`, etc.). The `legal_research` repo (`ploudn/legal-research`) holds shared tools only — project subfolders are separate repos, not submodules.
 
-Files that should never be committed (add to each project's `.gitignore`):
+Standard `.gitignore` entries for each project:
 ```
-Papers/*.pdf
 Papers/**/*.pdf
 Papers/**/*.epub
 Papers/txt/

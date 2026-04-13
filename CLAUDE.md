@@ -85,6 +85,8 @@ Each section is a `.md` file:
 
 Format: per paper — summary (3–6 sentences), key quotes with printed page numbers, relevance rating. Papers ordered by decreasing relevance to the specific argument. Bibliographies and literature reviews are per paper, not shared across projects.
 
+At the end of every literature review, append a section **"Papers worth downloading"** listing works not in the folder that are likely worth reading, based on: frequency of citation across the papers already read, reputation of the journal or publisher, and relevance to the specific argument being developed. For each entry give: full citation, reason for recommending it, and which papers in the folder cite it.
+
 ---
 
 ## Peer-review framework

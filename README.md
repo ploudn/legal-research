@@ -107,7 +107,7 @@ When I begin a new paper, here is what needs to happen, in order:
 
 2. **"Convert the PDFs"** — Claude runs `convert.py` on my `Papers/` folder. If any PDFs are image-only scans, OCR kicks in automatically.
 
-3. **"Do a literature review on [topic/argument]"** — Before Claude starts, it will propose a plan (which papers to include, how to order them, what angle to take) and ask me to confirm. Then it reads the relevant text files and produces the review.
+3. **"Do a literature review on [topic/argument]"** — Before Claude starts, it will propose a plan (which papers to include, how to order them, what angle to take) and ask me to confirm. Then it reads the relevant text files and produces the review. At the end, it appends a list of papers not in my folder that are worth downloading, based on how often they are cited and how relevant they are.
 
 4. **"Write [section name]"** — Before Claude starts, it will propose a plan and ask for the intended conclusion of the section if I have not already given it. Once I confirm, it writes the section as a `.md` file and converts it to a formatted Word document.
 

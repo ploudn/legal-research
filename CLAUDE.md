@@ -90,7 +90,7 @@ Format: per paper, ordered by decreasing relevance to the specific argument:
 - **Relevance analysis**: 2–4 sentences explaining exactly how this paper bears on the specific argument being developed — not just "this is relevant to X" but "this paper supports/complicates/undermines the claim that Y because Z"
 - **Relevance rating**: High / Medium–High / Medium / Low
 
-Bibliographies and literature reviews are per paper, not shared across projects.
+Literature reviews are per paper and usually per theme within a paper (e.g. a separate review for each major section or argument strand), though a single review covering the whole paper is also possible. The scope — whole paper or specific theme — should be confirmed before starting.
 
 At the end of every literature review, append a section **"Papers worth downloading"** listing works not in the folder that are likely worth reading, based on: frequency of citation across the papers already read, reputation of the journal or publisher, and relevance to the specific argument being developed. For each entry give: full citation, reason for recommending it, and which papers in the folder cite it.
 
